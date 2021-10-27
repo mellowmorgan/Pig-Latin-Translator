@@ -16,19 +16,26 @@ function translator (word){
   if(vowelChecker(word.charAt(0))){
     newWord = word.concat(vowelSuffix);
     return newWord;
-  } 
-  else{
+  } else{
       for(let i = 0; i < word.length; i++) {
       letter += word.charAt(i);
-      if(vowelChecker(word.charAt(i+1))){
+      if(vowelChecker(word.charAt(i+1))&&(!(word.charAt(0)==='q'))){
         consonantSuffix=letter+consonantSuffix;
-        word=word.slice(i+1,word.length)
+        word=word.slice(i+1,word.length);
         newWord=word.concat(consonantSuffix);
         return newWord;
         
       }
+      else if((word.charAt(0)==='q') && (word.charAt(i+1)==='u')){
+        consonantSuffix="qu"+consonantSuffix;
+        word=word.slice(i+2,word.length);
+        newWord=word.concat(consonantSuffix);
+        return newWord;
+      }
+
     }
   } 
+
 }
   
 
