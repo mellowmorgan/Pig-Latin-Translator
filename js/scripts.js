@@ -8,16 +8,27 @@
 //   return false;
 // }
 
-function checkIfStringHasSpecialChar(string)
+function stripPuctuation(string)
 { 
   string = string.replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/g, "");
   return string;
 }
+function passageTranslator(passage){
+  passage = stripPuctuation(passage);
+  arrayPassage = passage.split(" ");
+  let newWord;
+  let translatedArray=[];
+  arrayPassage.forEach(function(word){
+    newWord = wordTranslator(word);
+    translatedArray.push(newWord);
+  });
+  const pigLatinPassage = translatedArray.join(" ");
+  return pigLatinPassage;
+}
 
 
-
-
-function translator (word){
+function wordTranslator(word){
+  word=word.toLowerCase();
   //if its got nonalphabetical characters return 0
   // if(word.match(/\d+/g)){return 0;}
   if(/[^a-z]/.test(word)){return 0;}
@@ -60,6 +71,6 @@ $(document).ready(function(){
   $("form#translator").submit(function(event){
     event.preventDefault();
     const input = $("#text-passage").val();
-    $("#pig-latin").html(translator(input));
+    $("#pig-latin").html(passageTranslator(input));
   });
 });
