@@ -10,12 +10,15 @@
 
 function stripPuctuation(string)
 { 
+  
   string = string.replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/g, "");
   return string;
 }
+
 function passageTranslator(passage){
   passage = stripPuctuation(passage);
   arrayPassage = passage.split(" ");
+
   let newWord;
   let translatedArray=[];
   arrayPassage.forEach(function(word){
@@ -25,6 +28,7 @@ function passageTranslator(passage){
   const pigLatinPassage = translatedArray.join(" ");
   return pigLatinPassage;
 }
+
 
 
 function wordTranslator(word){
