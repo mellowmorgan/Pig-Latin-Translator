@@ -8,19 +8,26 @@ function vowelChecker(letter){
   return false;
 }
 
-
-
-
-
 function translator (word){
   const vowelSuffix = "way";
+  let consonantSuffix = "ay";
   let newWord;
+  let letter = "";
   
   for(let i = 0; i < word.length; i++) {
     if(vowelChecker(word.charAt(i))){
       newWord = word.concat(vowelSuffix);
+    } else {
+      letter += word.charAt(i);
+      consonantSuffix=letter+consonantSuffix;
+      word=word.slice(i+1,word.length)
+      newWord=word.concat(consonantSuffix);
+      break;
+
     }
-  }
+  } 
+
+
   return newWord;
 
 }
