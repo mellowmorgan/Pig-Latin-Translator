@@ -1,10 +1,28 @@
 Describe: translator()
 
-Test: "It should return true if input is a vowel."
+Test: "It should return vowel + "way" if input is a vowel."
 Code:
 const text = "a";
 translator(word);
-Expected Output: true
+Expected Output: "away"
+
+Test: "It should return translated word with consonant moved to the orignal word's end + "ay."
+Code:
+const text = "cat";
+translator(word);
+Expected Output: "atcay"
+
+Test: For words beginning with one or more consonants it should return translated word with consonants moved to the end + "ay".
+Code:
+const text = "street";
+translator(word);
+Expected Output: "eetstray"
+
+Test: For words beginning with one or more consonants or "qu" it should return translated word with consonants (or "qu") moved to the end + "ay".
+Code:
+const text = "quack";
+translator(word);
+Expected Output: "ackquay"
 
 
 

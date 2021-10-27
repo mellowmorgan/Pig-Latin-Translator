@@ -46,6 +46,6 @@ $(document).ready(function(){
   $("form#translator").submit(function(event){
     event.preventDefault();
     const input = $("#text-passage").val();
-
+    $("#pig-latin").html(translator(input));
   });
 });
