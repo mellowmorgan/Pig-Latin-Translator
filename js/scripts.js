@@ -13,24 +13,26 @@ function translator (word){
   let consonantSuffix = "ay";
   let newWord;
   let letter = "";
-  
-  for(let i = 0; i < word.length; i++) {
-    if(vowelChecker(word.charAt(i))){
-      newWord = word.concat(vowelSuffix);
-    } else {
+  if(vowelChecker(word.charAt(0))){
+    newWord = word.concat(vowelSuffix);
+    return newWord;
+  } 
+  else{
+      for(let i = 0; i < word.length; i++) {
       letter += word.charAt(i);
-      consonantSuffix=letter+consonantSuffix;
-      word=word.slice(i+1,word.length)
-      newWord=word.concat(consonantSuffix);
-      break;
-
+      if(vowelChecker(word.charAt(i+1))){
+        consonantSuffix=letter+consonantSuffix;
+        word=word.slice(i+1,word.length)
+        newWord=word.concat(consonantSuffix);
+        return newWord;
+        
+      }
     }
   } 
-
-
-  return newWord;
-
 }
+  
+
+
 
 
 $(document).ready(function(){
